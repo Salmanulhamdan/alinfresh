@@ -194,8 +194,9 @@ def add_category(request):
     return render(request,'admintemplates/add_category.html',{'fm':fm})
     
 
-#for deleting 
 
+
+#for deleting category
 def delete_category(request,id):
         pi = Category.objects.get(pk=id)
         pi.delete()
