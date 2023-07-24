@@ -1,0 +1,34 @@
+{% extends 'admintemplates/index.html' %}
+{% load static %}
+
+
+{% block content %}
+<table class="table table-hover tm-table-small tm-product-table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Order.Date</th>      
+     </tr>
+    </thead>
+    <tbody>
+      {% for order in myorder %}
+      <tr>
+       
+        <td><img src="{{ order.product.image.url}}"></img></td>
+         
+          <td>{{ order.product }}</td>
+          <td>{{ order.quantity}}</td>
+          <td>{{ order.product_price}}</td>
+          
+          <td>{{ order.created_at }}</td>
+        
+      </tr>
+      {% endfor %}
+  </tbody>
+  <a href='{% url 'adminpage' %}' class="btn btn-primary"> Back To Dashboard</a>
+
+{% endblock content %}
