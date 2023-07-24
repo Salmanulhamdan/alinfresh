@@ -195,6 +195,7 @@ def add_category(request):
     
 
 
+
 #for deleting category
 def delete_category(request,id):
         pi = Category.objects.get(pk=id)
