@@ -44,11 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'corsheaders',
+    
 ]
 AUTH_USER_MODEL = 'userapp.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,6 +80,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'alinfresh.wsgi.application'
+# settings.py
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 # Database
