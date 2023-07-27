@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['*']
 CORS_ORIGIN_WHITELIST = ['*']
+APPEND_SLASH=False
 
 # Application definition
 
