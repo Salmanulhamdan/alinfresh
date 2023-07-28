@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Payment :: w3layouts</title>
+<title>Alinfresh</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,41 +19,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
 <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all" /> 
 <!-- //font-awesome icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 	
 <body>
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
+			<a href="{% url 'home' %}">Today's special Offers !</a>
 		</div>
 		<div class="w3l_search">
-			<form action="{% url 'view_cart' %}" method="post" class="last">
+			<form action="#" method="post">
+				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+				<input type="submit" value=" ">
+			</form>
+		</div>
+		<div class="product_list_header">  
+            <form action="{% url 'view_cart' %}" method="post" class="last">
 				{% csrf_token %}
                     <input type="submit" name="submit" value="View your cart" class="button" />
             </form>
 		</div>
-		<div class="product_list_header">  
-			<form action="#" method="post" class="last">
-                <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <input type="submit" name="submit" value="View your cart" class="button" />
-                </fieldset>
-            </form>
-		</div>
-		<div class="w3l_header_right">
+        <div class="w3l_header_right">
 			<ul>
 		
 				<li class="dropdown profile_details_drop">
@@ -82,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="mail.html">Contact Us</a></h2>
+			<h2><a href="{% url 'mailpage' %}">Contact Us</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -90,20 +84,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.html"><span>Grocery</span> Store</a></h1>
+				<h1><a href="index.html"><span>Alin</span> Fresh</a></h1>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="events.html">Events</a><i>/</i></li>
-					<li><a href="about.html">About Us</a><i>/</i></li>
-					<li><a href="products.html">Best Deals</a><i>/</i></li>
-					<li><a href="services.html">Services</a></li>
+					<li><a href="{% url 'eventspage' %}">Events</a><i>/</i></li>
+					<li><a href="{% url 'aboutpage' %}">About Us</a><i></i></li>
+					
+				
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i>8129530947</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">alinfresh.com</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -111,41 +105,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //header -->
 <!-- products-breadcrumb -->
+{% block content %}
 	<div class="products-breadcrumb">
 		<div class="container">
 			<ul>
-				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
-				<li>Payment</li>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{% url 'home' %}">Home</a><span>|</span></li>
+				<li>Cart</li>
 			</ul>
 		</div>
 	</div>
 <!-- //products-breadcrumb -->
-
 <!-- banner -->
-<div class="banner">
-</div>
-<br>
-<div class="w3l_banner_nav_right"style=" align-items: center;">
-<br>
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div> 
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+			   <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+				<ul class="nav navbar-nav nav_1">
+					<li><a href="{% url 'home' %}">All</a></li>
+					{% for category in links %}
+					<li><a href="{{category.get_url}}">{{ category.name }}</a></li>
+					{% endfor %}
+				
+				</ul>
+			 </div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+<!-- about -->
 
-		<div class="card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success"><h2>Invoice</h2></div>
-            <div class="card-body text-secondary">
-           
-              <p class="card-text"> <h3>{{address.name}}</h3>
-                <h5>{{address.house}}, {{address.place}}, {{address.address_line}},<br>  Phone number: {{address.ultranate_phone}}</h5>
-                <br>
-                
-                
-                    
-                        <ul>
-                    
-                            <h1><li><h4>Total Amount <i>-</i> <span>{{total}}</h4></span></li></h1>
-                        </ul> </p>
-            </div>
-            <div class="card-footer bg-transparent border-success"><button id="rzp-button1" class="btn btn-success" payment='Online'>Pay with Razorpay</button></div>
-          </div>
 
+		{% endblock %}
+		<div class="clearfix"> </div>
+	
+			</div>
+<!-- //about -->
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -239,52 +242,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- js -->
-<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
-<!-- easy-responsive-tabs -->    
-<link rel="stylesheet" type="text/css" href="{% static 'css/easy-responsive-tabs.css' %} " />
-<script src="{% static 'js/easyResponsiveTabs.js' %}"></script>
-<!-- //easy-responsive-tabs --> 
-	<script type="text/javascript">
-    $(document).ready(function() {
-        //Horizontal Tab
-        $('#parentHorizontalTab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true, // 100% fit in a container
-            tabidentify: 'hor_1', // The tab groups identifier
-            activate: function(event) { // Callback function if tab is switched
-                var $tab = $(this);
-                var $info = $('#nested-tabInfo');
-                var $name = $('span', $info);
-                $name.text($tab.text());
-                $info.show();
-            }
-        });
-    });
-</script>
-<!-- credit-card -->
-		<script type="text/javascript" src="{% static 'js/creditly.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'css/creditly.css' %}" type="text/css" media="all" />
-
-		<script type="text/javascript">
-			$(function() {
-			  var creditly = Creditly.initialize(
-				  '.creditly-wrapper .expiration-month-and-year',
-				  '.creditly-wrapper .credit-card-number',
-				  '.creditly-wrapper .security-code',
-				  '.creditly-wrapper .card-type');
-
-			  $(".creditly-card-form .submit").click(function(e) {
-				e.preventDefault();
-				var output = creditly.validate();
-				if (output) {
-				  // Your validated credit card output
-				  console.log(output);
-				}
-			  });
-			});
-		</script>
-	<!-- //credit-card -->
+<script src="js/jquery-1.11.1.min.js"></script>
+							
 
 <!-- //js -->
 <!-- script-for sticky-nav -->
@@ -304,8 +263,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 <!-- //script-for sticky-nav -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -316,7 +275,77 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 <!-- Bootstrap Core JavaScript -->
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	function getCookie(name) {
+		let cookieValue = null;
+		if (document.cookie && document.cookie !== '') {
+		  const cookies = document.cookie.split(';');
+		  for (let i = 0; i < cookies.length; i++) {
+			const cookie = cookies[i].trim();
+			// Does this cookie string begin with the name we want?
+			if (cookie.substring(0, name.length + 1) === name + '=') {
+			  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+			  break;
+			}
+		  }
+		}
+		return cookieValue;
+	  }
+
+
+$(document).ready(function() {
+	$('#apply-coupon-button').click(function() {
+	  applyCoupon();
+	});
+  });
+  
+  function applyCoupon() {
+	console.log("button clicked");
+	var url = "{% url 'apply_coupon' %}";
+	var csrfToken = getCookie('csrftoken');
+	var coupon = $('#coupon').val();
+	console.log(coupon);
+	var couponId = $('#coupon-id');
+	console.log(couponId);
+  
+	var totalPrice = parseInt($('#total_price').text().replace('₹ ', ''));
+	console.log(totalPrice);
+  
+	$.ajax({
+	  url: url,
+	  type: 'POST',
+	  dataType: 'json',
+	  headers: {
+		'Content-type': 'application/json',
+		'X-CSRFToken': csrfToken
+	  },
+	  data: JSON.stringify({
+		coupon: coupon,
+		grand_total: totalPrice
+	  }),
+	  success: function(response) {
+		if (response) {
+			console.log(response.total)
+			console.log(response.discount)
+		  couponId.html(response.message);
+		  $('#total_price').text('₹ ' + response.total);
+		  $('#discount').text('₹ ' + response.discount);
+		 
+		  
+		}
+	  },
+	  error: function() {
+		console.log('Error');
+	  }
+	});
+  }
+</script>
+
+
 <script>
 $(document).ready(function(){
     $(".dropdown").hover(            
@@ -330,6 +359,63 @@ $(document).ready(function(){
         }
     );
 });
+
+
+
+	$('.value-plus').on('click', function() {
+		console.log("plus function working")
+		var cartItemId = $(this).data('id');
+		var action = $(this).data('action');
+		console.log(cartItemId)
+		updateCartItemQuantity(cartItemId, action);
+		
+
+	  
+	});
+  
+	$('.value-minus').on('click', function() {
+		console.log("minus function working")
+		var cartItemId = $(this).data('id');
+		var action = $(this).data('action');
+		console.log(cartItemId)
+		updateCartItemQuantity(cartItemId, action);
+	  
+	});
+	function updateCartItemQuantity(cartItemId, action) {
+		$.ajax({
+		  url: "{% url 'update_cart_item_quantity' %}",
+		  method: 'GET',
+		  data: {
+			cart_item_id: cartItemId,
+			action: action
+		  },
+		  success: function(response) {
+			if (response.status === 200) {
+			  // Update the quantity value in the template
+			  var quantitySpan = $('.value[data-id="' + cartItemId + '"] span');
+			  quantitySpan.text(response.quantity);
+
+			  // update total price in template
+			  var totalspan = $('.total[data-id="' + cartItemId + '"] span');
+			  totalspan.text(response.subtotal);
+
+			  var carttotalspan = $('.cartotatl');
+			  carttotalspan.text(response.total);
+			  console.log(response.total)
+
+			  
+			}
+		  }
+		});
+	  }
+	
+  
+
+  
+
+
+
+
 </script>
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
@@ -348,63 +434,6 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="{% static 'js/minicart.js' %}"></script>
-<script>
-		paypal.minicart.render();
 
-		paypal.minicart.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-
-	</script>
-	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-	<script>
-		var options = {
-			"key": "rzp_test_3qZUuOKRMbNOf0", // Enter the Key ID generated from the Dashboard
-			"amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-			"currency": "INR",
-			"name": "Alin Fresh",
-			"description": "Test Transaction",
-			"image": "https://example.com/your_logo",
-			//"order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-			"handler": function (response){
-				//alert(response.razorpay_payment_id);
-				//alert(response.razorpay_order_id);
-				//alert(response.razorpay_signature)
-				window.location.href = "{% url 'place_order' id=address.id payment_method='Online' %}";
-			},
-			
-			"theme": {
-				"color": "#3399cc"
-			}
-		};
-		var rzp1 = new Razorpay(options);
-		rzp1.on('payment.failed', function (response){
-				alert(response.error.code);
-				alert(response.error.description);
-				alert(response.error.source);
-				alert(response.error.step);
-				alert(response.error.reason);
-				alert(response.error.metadata.order_id);
-				alert(response.error.metadata.payment_id);
-		});
-		document.getElementById('rzp-button1').onclick = function(e){
-			rzp1.open();
-			e.preventDefault();
-		}
-		</script>
 </body>
 </html>

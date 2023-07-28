@@ -67,6 +67,7 @@ def calculate_cart_total(cart_items):
     return int(total_price)
 
 def view_cart(request):
+    total=0
     if request.user.is_authenticated:
         coupons = Coupons.objects.all()
         cart = Cart.objects.filter(user=request.user).first()
@@ -77,14 +78,7 @@ def view_cart(request):
         else:
             total_price = calculate_cart_total(cart_items)
     else:
-        cart_items = []
-
-        # Retrieve the cart items from the session
-        cart_ids = request.session.get('cart', [])
-        if cart_ids:
-            # Fetch the cart items using the product IDs from the session
-            cart_items = Cartitem.objects.filter(id__in=cart_ids)
-            print
+        return redirect('login')
 
     # Calculate the subtotal for each cart item
     

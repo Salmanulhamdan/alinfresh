@@ -114,7 +114,7 @@
                           new Chart(ctx1, {
                             type: 'bar',
                             data: {
-                              labels: {{ monthNumber|safe }},
+                              labels: {{ dayNumber|safe }},
                               datasets: [{
                                 label: 'Total orders by this month',
                                 data: {{ totalOrders|safe }},
@@ -199,6 +199,42 @@
                               });
                             </script>
                         </div>                        
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block">
+                        <h2 class="tm-block-title">Sales Report</h2>
+                        <table class="table" id="delivered_order_month_table">
+                            <!-- <caption>List of categories</caption> -->
+                            <thead>
+                              <tr>
+                                <th scope="col">Year</th>
+                                <th scope="col">Order Count</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                              
+                                {% for order in order_by_year %}
+                              <tr>
+                                <td> {{order.year}}</td>
+                                <td>{{ order.count }}</td>   
+                              </tr>
+                              {% endfor %}
+                               
+              
+                            </tbody>
+                          </table>
+    
+                          <div class="row ml-5">
+                            <div class="text-center mt-3 col-6">
+                                <a onclick="exportTableToExcel('delivered_order_month_table','delivered_order_by_month')"  class="btn btn-success">Download Excel</a>
+                            </div>
+                            <div class="text-center mt-3 col-6">
+                                <a onclick="exportTableToPDF('delivered_order_month_table','delivered_order_by_month')"  class="btn btn-success">Download Pdf</a>
+                            </div>
+                              </div>
+                           
+                        
                     </div>
                 </div>
              

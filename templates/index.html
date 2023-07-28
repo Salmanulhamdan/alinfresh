@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
+			<a href="{% url 'home' %}">Today's special Offers !</a>
 		</div>
 		<div class="w3l_search">
 			<form action="{% url 'search' %}" method="GET">
@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="mail.html">Contact Us</a></h2>
+			<h2><a href="{% url 'mailpage' %}">Contact Us</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -116,16 +116,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="events.html">Events</a><i>/</i></li>
-					<li><a href="about.html">About Us</a><i>/</i></li>
-					<li><a href="products.html">Best Deals</a><i>/</i></li>
-					<li><a href="services.html">Services</a></li>
+					<li><a href="{% url 'eventspage' %}">Events</a><i>/</i></li>
+					<li><a href="{% url 'aboutpage' %}">About Us</a><i>/</i></li>
+				
+					
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i>8129530947</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">alinfresh.com</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -208,34 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>
 <!-- banner -->
-	{% comment %} <div class="banner_bottom">
-			<div class="wthree_banner_bottom_left_grid_sub">
-			</div>
-			<div class="wthree_banner_bottom_left_grid_sub1">
-				<div class="col-md-4 wthree_banner_bottom_left">
-					<div class="wthree_banner_bottom_left_grid">
-						<img src="{% static 'images/4.jpg' %}" alt=" " class="img-responsive" />
-						<div class="wthree_banner_bottom_left_grid_pos">
-							<h4>Discount Offer <span>25%</span></h4>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 wthree_banner_bottom_left">
-					<div class="wthree_banner_bottom_left_grid">
-						<img src="{% static 'images/5.jpg' %}" alt=" " class="img-responsive" />
-						<div class="wthree_banner_btm_pos">
-							<h3>introducing <span>best store</span> for <i>groceries</i></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 wthree_banner_bottom_left">
-					<div class="wthree_banner_bottom_left_grid">
-						<img src="{% static 'images/6.jpg' %}" alt=" " class="img-responsive" />
-						<div class="wthree_banner_btm_pos1">
-							<h3>Save <span>Upto</span> $10</h3>
-						</div>
-					</div>
-				</div> {% endcomment %}
+	
 				<div class="clearfix"> </div>
 			</div>
 			<div class="clearfix"> </div>
@@ -258,11 +231,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<h4>{{product.price}} </h4>
 									</div>
 									<div class="snipcart-details top_brand_home_details">
-									
+									{% if user.is_authenticated %}
 										<button  class="add-to-cart-button btn btn-danger addToCartBtn" data-id={{product.id}} >Add To Cart</button>
 											
 
-										
+										{% else %}
+										<a href="{% url 'login' %}"><button class=" btn btn-danger "> Please Login</button>
+											{% endif %}
 									</div>
 								</div>
 							</figure>
@@ -293,68 +268,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </script>
 <!-- //top-brands -->
 <!-- fresh-vegetables -->
-<div class="fresh-vegetables">
-	<div class="container">
-		<h3>Top Products</h3>
-		<div class="w3l_fresh_vegetables_grids">
-			<div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
-				<div class="w3l_fresh_vegetables_grid2">
-					<ul>
-						<li><i class="fa fa-check" aria-hidden="true"></i><a href="{% url 'home' %}">All Brands</a></li>
-						{% for category in links %}
-						<li><i class="fa fa-check" aria-hidden="true"></i><a href="{{category.get_url}}">{{ category.name }}</a></li>
-						{% endfor %}
-						
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-9 w3l_fresh_vegetables_grid_right">
-				<div class="col-md-4 w3l_fresh_vegetables_grid">
-					<div class="w3l_fresh_vegetables_grid1">
-						<img src="{% static 'images/8.jpg' %}" alt=" " class="img-responsive" />
-					</div>
-				</div>
-				<div class="col-md-4 w3l_fresh_vegetables_grid">
-					<div class="w3l_fresh_vegetables_grid1">
-						<div class="w3l_fresh_vegetables_grid1_rel">
-							<img src="{% static 'images/7.jpg' %}" alt=" " class="img-responsive" />
-							<div class="w3l_fresh_vegetables_grid1_rel_pos">
-								<div class="more m1">
-									<a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="w3l_fresh_vegetables_grid1_bottom">
-						<img src="{% static 'images/10.jpg' %}" alt=" " class="img-responsive" />
-						<div class="w3l_fresh_vegetables_grid1_bottom_pos">
-							<h5>Special Offers</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 w3l_fresh_vegetables_grid">
-					<div class="w3l_fresh_vegetables_grid1">
-						<img src="{% static 'images/9.jpg' %}" alt=" " class="img-responsive" />
-					</div>
-					<div class="w3l_fresh_vegetables_grid1_bottom">
-						<img src="{% static 'images/11.jpg' %}" alt=" " class="img-responsive" />
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-				<div class="agileinfo_move_text">
-					<div class="agileinfo_marquee">
-						<h4>get <span class="blink_me">25% off</span> on first order and also get gift voucher</h4>
-					</div>
-					<div class="agileinfo_breaking_news">
-						<span> </span>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-</div>
+
+
 <!-- //fresh-vegetables -->
 <!-- newsletter -->
 	<div class="newsletter">

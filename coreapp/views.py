@@ -292,7 +292,7 @@ def apply_coupon(request):
 
 
 
-
+#for applying wallet
 
 
 def apply_wallet(request,id):
@@ -321,6 +321,25 @@ def apply_wallet(request,id):
         'max_reduction': max_reduction,
     }
     return render(request, 'payment.html', context)
+
+
+#loding some templates
+
+def eventspage(request):
+     return render(request,'events.html')
+def mailpage(request):
+     return render(request,'mail.html')
+def aboutpage(request):
+     return render(request,'about.html')
+
+
+
+#for handling404 error
+
+def handling_404(request,exception):
+     return render(request,'error_page.html',{})
+
+
     
 
 

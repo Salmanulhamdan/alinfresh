@@ -14,6 +14,11 @@ urlpatterns = [
 
     path('applycoupon',views.apply_coupon,name="apply_coupon"),
     path('apply_wallet/<int:id>/',views.apply_wallet,name="apply_wallet"),
+    path('eventspage',views.eventspage,name="eventspage"),
+    path('mailpage',views.mailpage,name="mailpage"),
+    path('aboutpage',views.aboutpage,name="aboutpage"),
+
+
 
     
     # path('order/create/', views.order_create_view, name='order-create'),

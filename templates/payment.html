@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
+			<a href="{% url 'home' %}">Today's special Offers !</a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -47,23 +47,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</form>
 		</div>
 		<div class="product_list_header">  
-			<form action="#" method="post" class="last">
-                <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
+			<form action="{% url 'view_cart' %}" method="post" class="last">
+				{% csrf_token %}
                     <input type="submit" name="submit" value="View your cart" class="button" />
-                </fieldset>
             </form>
 		</div>
 		<div class="w3l_header_right">
 			<ul>
+		
 				<li class="dropdown profile_details_drop">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+				
+					<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+					{% if user.is_authenticated %}
+					<a href=""><p style='color:white'>{{ user.name }}</p></a>
+					{% endif %}
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="login.html">Login</a></li> 
-								<li><a href="login.html">Sign Up</a></li>
+								{% if user.is_authenticated %}
+								
+								<li><a href="{% url 'user_profile' %}">Profile</a></li>
+							
+					
+								<li><a href="{% url 'signout' %}">Sign Out</a></li>
+								{% else %}
+								<li><a href="{% url 'login' %}">Login</a></li> 
+								<li><a href="{% url 'signup' %}">Sign Up</a></li>
+								{% endif %}
 							</ul>
 						</div>                  
 					</div>	
@@ -71,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="mail.html">Contact Us</a></h2>
+			<h2><a href="{% url 'mailpage' %}">Contact Us</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -83,10 +93,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="events.html">Events</a><i>/</i></li>
-					<li><a href="about.html">About Us</a><i>/</i></li>
-					<li><a href="products.html">Best Deals</a><i>/</i></li>
-					<li><a href="services.html">Services</a></li>
+					<li><a href="{% url 'eventspage' %}">Events</a><i>/</i></li>
+					<li><a href="{% url 'aboutpage' %}">About Us</a><i></i></li>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">

@@ -12,7 +12,7 @@ from django.forms import inlineformset_factory
 from userapp.models import CustomUser
 from coreapp.models import *
 from django.db.models import Count
-from django.db.models.functions import ExtractMonth,ExtractYear
+from django.db.models.functions import ExtractMonth,ExtractYear,ExtractDay
 # from .forms import AdminLoginForm
 
 def admin_login(request):
@@ -64,9 +64,19 @@ def adminpage(request):
 
     for o in order_by_year:
         yearNumber.append(o['year'])
-        total_Orders.append(o['count'])    
+        total_Orders.append(o['count'])   
+    order_by_days = Order.objects.annotate(day=ExtractDay('created_at')).values('day').annotate(count=Count('id')).values('day', 'count')
+
+    dayNumber = []
+    totalOrdersByDay = []
+
+    for o in order_by_days:
+        dayNumber.append(o['day'])
+        totalOrdersByDay.append(o['count']) 
 
     context = {
+        'order_by_year':order_by_year,
+        'dayNumber':dayNumber,
         'monthNumber': monthNumber,
         'totalOrders': totalOrders,
         'yearNumber': yearNumber,
