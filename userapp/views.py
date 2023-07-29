@@ -88,7 +88,7 @@ def verify_code(request):
                 if userobj is not None and user.is_active and user.is_superuser == False:
                     login(request, user)
                     return redirect('home')
-                print(user)
+              
                 return redirect('home')
             else:
                 print("error")
@@ -118,17 +118,17 @@ def otp_login(request):
 
 def username_password(phone):
     user = CustomUser.objects.filter(phone_number=phone).first()
-    print(user)
+  
     return user
 
 def check_phone_number(phone_number):
     try:
         phone_number = CustomUser.objects.filter(phone_number=phone_number)
-        print(phone_number)
+        
         return True
     except CustomUser.DoesNotExist:
         return False
-    
+ #otp-login-end   
 
 #for adding shipping address
 class AddAddressView(CreateView):
@@ -162,31 +162,7 @@ def edit_address(request, id):
 
     return render(request, 'address.html', {'form': form})
 
-# class EditAddressView(View):
-#     def get(self, request, id):
-#         adress = get_object_or_404(Address, pk=id)
-#         adress_form = AddressForm(instance=adress)
-
-#         context = {
-#             "adress_form": adress_form
-#         }
-#         return render(request, 'address.html', context)
-
-#     def post(self, request, id):
-#         adress = get_object_or_404(Address, pk=id)
-#         adress_form = AddressForm(request.POST, request.FILES, instance=adress)
-        
-#         if adress_form.is_valid():
-#             adress_form.save()
-#             return redirect('checkout_view')
-        
-#         context = {
-#             "adress_form": adress_form
-#         }
-#         return render(request, 'address.html', context)
-
-
-#delete address
+#for deleting address
 
 class DeleteAddressView(View):
     def get(self, request, id):
@@ -300,18 +276,11 @@ def resetPassword(request):
     
     if request.method == 'POST':
         password1 = request.POST.get('password')
-        password2 = request.POST.get('confirm_password')
-        print(str(password1)+' '+str(password2)) #checking
-        
+        password2 = request.POST.get('confirm_password')    
         if password1 == password2:
-            user = CustomUser.objects.get(phone_number=mobile_number)
-            print(user)
-            print('old password  : ' +str(user.password))
-            
+            user = CustomUser.objects.get(phone_number=mobile_number)         
             user.set_password(password1)
             user.save()
-
-            print('new password  : ' +str(user.password))
             # messages.success(request, 'Password changed successfully')
             return redirect('login')
         else:
@@ -352,7 +321,6 @@ def userprofileorderlist(request):
 #order cancel function
 
 def cancel_order(request,id):
-    print(id)
     
     if request.method == "POST":
         cancellation_reason = request.POST.get('cancellation_reason')
@@ -386,7 +354,7 @@ def cancel_order(request,id):
 #order return function
 
 def return_order(request,id):
-    print(id)
+   
     if request.method=="POST":
         return_reason=request.POST.get('return_reason')
         try:
@@ -411,7 +379,7 @@ def return_order(request,id):
 def search(request):
     if "keyword" in request.GET:
         keyword=request.GET['keyword']
-        print(keyword)
+     
     
         products=Product.objects.order_by('created_at').filter(Q(name_icontains=keyword) | Q(description_icontains=keyword) )
         product_count=products.count()

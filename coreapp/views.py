@@ -108,7 +108,7 @@ def pyment_page(request,id):
  
 
   
-    print(total_price)
+
     
 
     context={
@@ -129,9 +129,7 @@ def confirm_pyment_page(request,id):
     else:
             total_price = calculate_cart_total(cart_items)
     client = razorpay.Client(auth=(settings.KEY, settings.SECRET))
-    # print(client)
-    # data = { "amount": total_price, "currency": "INR", "receipt": "order_rcptid_11" }
-    print(total_price)
+   
     payment = client.order.create({ "amount": total_price*100, "currency": "INR", "receipt": "order_rcptid_11" })
 
     context={
@@ -229,8 +227,6 @@ class PlaceOrderView(View):
 
         # Redirect to a success page or show a success message
         thankspage_url = reverse('thankspage', args=[order.id])
-        print(order.id)
-        print(thankspage_url)
         return redirect(thankspage_url)
                                  
 def thankspage(request, order_id):

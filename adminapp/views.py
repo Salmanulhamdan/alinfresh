@@ -15,7 +15,7 @@ from django.db.models import Count
 from django.db.models.functions import ExtractMonth,ExtractYear,ExtractDay
 
 # from .forms import AdminLoginForm
-
+#adminlogin and logout
 def admin_login(request):
     if request.user.is_authenticated:
         return redirect('adminpage')
@@ -38,7 +38,7 @@ def admin_login(request):
 def adminpage(request):
     delivered_orders = Order.objects.filter(status='Delivered')
     delivered_orders_by_months = delivered_orders.annotate(delivered_month=ExtractMonth('created_at')).values('delivered_month').annotate(delivered_count=Count('id')).values('delivered_month', 'delivered_count')
-    print( delivered_orders_by_months)
+
     delivered_orders_month = []
     delivered_orders_number = []
     for d in delivered_orders_by_months:
@@ -151,9 +151,6 @@ def add_products(request):
                  product = fm.save()  # Save the product object
                  image_form.instance = product
                  image_form.save()
-                #  images = request.FILES.getlist('images')
-                #  for image in images:
-                #     ProductImage.objects.create(product=product, image=image)
                  return redirect('products')
      else:
          fm=ProductForm()

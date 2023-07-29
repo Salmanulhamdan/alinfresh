@@ -14,10 +14,10 @@ from django.shortcuts import get_object_or_404
 def add_to_cart(request):
     # Fetch product_id from the request
     product_id = request.GET.get('product_id')
-    print(product_id)
+    
     product = Product.objects.get(pk=product_id)
     variant_price = request.GET.get('price')
-    print(variant_price)
+   
 
     if request.user.is_authenticated:
         # If the user is logged in, add the item to their cart
@@ -28,9 +28,9 @@ def add_to_cart(request):
         if variant_price and variant_price != str(product.price):
             # Get the variant based on the selected price
             variant = ProductVariant.objects.get(product=product, price=variant_price)
-            print(variant)
+            
             cart_item, item_created = Cartitem.objects.get_or_create(user=user, Product=product, variant=variant, cart=cart)
-            print(item_created)
+           
         else:
             # If no variant is selected, add the base product to the cart
             cart_item, item_created = Cartitem.objects.get_or_create(user=user, Product=product, cart=cart)
@@ -47,7 +47,7 @@ def add_to_cart(request):
         cart.append(product_id)
         
         request.session['cart'] = cart
-        print(cart)
+       
     return JsonResponse({"status": 200, "message": "added"})    
 
 
