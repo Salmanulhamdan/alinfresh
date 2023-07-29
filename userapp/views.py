@@ -225,7 +225,7 @@ def forgotPassword(request):
         mobile_number_forgotPassword = request.POST.get('phone_number')
         
         # checking the null case
-        if mobile_number_forgotPassword is '':
+        if mobile_number_forgotPassword == '':
             # messages.warning(request, 'You must enter a mobile number')
             return redirect('forgotPassword')
    
