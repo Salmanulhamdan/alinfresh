@@ -35,7 +35,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="{% url 'adminpage' %}">
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                                 <span class="sr-only">(current)</span>
@@ -163,9 +163,10 @@
                             <div class="text-center mt-3 col-6">
                                 <a onclick="exportTableToPDF('delivered_order_month_table','delivered_order_by_month')"  class="btn btn-success">Download Pdf</a>
                             </div>
+                            
                               </div>
                            
-                        
+                              
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
@@ -233,11 +234,13 @@
                                 <a onclick="exportTableToPDF('delivered_order_month_table','delivered_order_by_month')"  class="btn btn-success">Download Pdf</a>
                             </div>
                               </div>
-                           
+                              <a class="btn btn-primary mt-3 me-3" href="{% url 'sales_date' %}">Filter by Date</a></div>
                         
                     </div>
                 </div>
-             
+                
+                    
+                
                 <div class="col-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
                         <h2 class="tm-block-title">Orders List</h2>

@@ -1,7 +1,7 @@
 import calendar
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .forms import CouponForm
+from .forms import *
 from coreapp.forms import OrderForm
 from product.forms import *
 from django.contrib import messages
@@ -13,6 +13,7 @@ from userapp.models import CustomUser
 from coreapp.models import *
 from django.db.models import Count
 from django.db.models.functions import ExtractMonth,ExtractYear,ExtractDay
+
 # from .forms import AdminLoginForm
 
 def admin_login(request):
@@ -308,6 +309,28 @@ def delete_coupon(request, id):
     coupon = get_object_or_404(Coupons, pk=id)
     coupon.delete()
     return redirect('list_coupen')  # Redirect to the coupon list page after deleting the coupon
+
+
+#for date sales repport with filter
+
+def sales_date(request):
+    if request.method == 'GET':
+        form = DateFilterForm(request.GET)
+      
+
+        if form.is_valid():
+            start_date = form.cleaned_data['start_date']
+            end_date = form.cleaned_data['end_date']
+
+            # Query the sales data within the specified date range
+            sales_data = Order.objects.filter(created_at__range=[start_date, end_date])
+
+            return render(request, 'admintemplates/sales.html', {'sales_data': sales_data, 'form': form,})
+
+    else:
+        form = DateFilterForm()
+
+    return render(request, 'admintemplates/sales.html', {'form': form})
 
     
 

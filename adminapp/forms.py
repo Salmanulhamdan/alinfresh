@@ -8,3 +8,8 @@ class CouponForm(forms.ModelForm):
             'valid_from': forms.DateInput(attrs={'type': 'date'}),
             'valid_to': forms.DateInput(attrs={'type': 'date'}),
         }  
+from django import forms
+
+class DateFilterForm(forms.Form):
+    start_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    end_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))

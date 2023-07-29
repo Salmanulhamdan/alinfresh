@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static%}
 {% block content %}
+<div class="products-breadcrumb">
+	<div class="container">
+		<ul>
+			<li><i class="fa fa-home" aria-hidden="true"></i><a href="{% url 'home' %}">Home</a><span>|</span></li>
+			<li>My Orders</li>
+		</ul>
+	</div>
+</div>
 <!-- banner -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">

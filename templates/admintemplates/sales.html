@@ -1,0 +1,106 @@
+
+{% extends 'admintemplates/index.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>Total Orders By Date</h1>
+                        <hr>
+                        <form method="get">
+                            {{ form }}
+                            <input type="submit"class="btn btn-success" value="Filter">
+                        </form>
+                        <br>
+                        <div class ="col-lg-10">
+                        <table class="table caption-top" id="order_date_table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">Ordered Date</th>
+                                {% comment %} <th scope="col">Order Count</th> {% endcomment %}
+                                <th scope="col">User</th>
+                                <th scope="col">Amount</th>
+
+                                <!-- Add other relevant sales data fields here -->
+                            </tr>
+                        </thead>
+                            {% for order in sales_data %}
+                            <tbody>
+                                <tr>
+                                    <td>{{ order.order_number }}</td>
+                                    <td>{{ order.created_at }}</td>
+                                    
+                                    <td>{{ order.user.first_name }}</td>
+                                    <td>{{ order.order_total }}</td>
+                                    <!-- Add other relevant sales data fields here -->
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                        <div class="row ml-5">
+                            <div class="text-center mt-3 col-6">
+                              <a onclick="exportTableToExcel('order_date_table','total_orders_by_date')" class="btn btn-success">Download Excel</a>
+                            </div>
+                            <div class="text-center mt-3 col-6">
+                              <a onclick="exportTableToPDF('order_date_table','total_orders_by_date')" class="btn btn-success">Download Pdf</a>
+                            </div>
+                          </div>
+                          <br><br>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://unpkg.com/xlsx/dist/xlsx.core.min.js"></script>
+
+        <script>
+            function exportTableToExcel(tableID, filename = '') {
+                console.log("ok")
+            var tableSelect = document.getElementById(tableID);
+            var sheet = XLSX.utils.table_to_sheet(tableSelect);
+        
+            // Create a new workbook and add the sheet
+            var workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, sheet, 'Sheet1');
+        
+            // Specify the file name
+            filename = filename ? filename + '.xlsx' : 'excel_data.xlsx';
+        
+            // Generate the XLSX file
+            var excelData = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+            var blob = new Blob([excelData], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        
+            // Download the blob as a file
+            download(blob, filename);
+            }
+        
+            function download(blob, filename) {
+            var url = window.URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+            }
+        
+        
+            </script>
+        
+        
+            <!-- convert to pdf script -->
+        
+        <script>
+        
+            function exportTableToPDF(tableID, filename = '') {
+              var tableSelect = document.getElementById(tableID);
+            
+              // Specify the file name
+              filename = filename ? filename : 'table_data';
+            
+              // Generate the PDF file
+              const { jsPDF } = window.jspdf; 
+              var doc = new jsPDF();
+              doc.autoTable({ html: '#' + tableID });
+            
+              // Download the PDF file
+              doc.save(filename + '.pdf');
+            }
+     </script>
+     {% endblock %}
