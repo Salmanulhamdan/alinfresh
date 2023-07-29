@@ -26,11 +26,13 @@ SECRET_KEY = 'django-insecure-d_+n_0491o+n46d@9wps@o7@pa#n1j6&mgl^xn+$7jdtmg2m#!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.49.44.199','0.0.0']
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000','http://13.49.44.199',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.49.44.199','0.0.0','alinfresh.online',]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000','http://13.49.44.199','http://alinfresh.online',]
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://13.49.44.199',
+    'http://alinfresh.online',
+
    
 ]
 CORS_ALLOW_ALL_ORIGINS = False
