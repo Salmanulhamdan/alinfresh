@@ -178,3 +178,22 @@ AUTHENTICATION_BACKENDS = [
  
 KEY="rzp_test_3qZUuOKRMbNOf0"
 SECRET="Mx5xU3NZDb23UaHmM6MZyqBd"
+
+
+
+
+
+# server {
+#     listen 80;
+#     server_name alinfresh.online 13.51.166.186;
+
+#     location = /favicon.ico { access_log off; log_not_found off; }
+#     location /static/ {
+#         root /home/ubuntu/alinfresh;
+#     }
+
+#     location / {
+#         include proxy_params;
+#         proxy_pass http://unix:/run/gunicorn.sock;
+#     }
+# }

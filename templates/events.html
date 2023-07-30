@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static%}
 {% block content %}
+<div class="products-breadcrumb">
+	<div class="container">
+		<ul>
+			<li><i class="fa fa-home" aria-hidden="true"></i><a href="{% url 'home' %}">Home</a><span>|</span></li>
+			<li>Events</li>
+		</ul>
+	</div>
+</div>
 <div class="events">
 	<h3>Events</h3>
 	<div class="w3agile_event_grids">
