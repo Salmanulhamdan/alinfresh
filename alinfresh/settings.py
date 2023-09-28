@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-d_+n_0491o+n46d@9wps@o7@pa#n1j6&mgl^xn+$7jdtmg2m#!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS =['*']
+ALLOWED_HOSTS =[]
 
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.49.44.199','0.0.0','alinfresh.online',]
 # CSRF_TRUSTED_ORIGINS = ['http://localhost:8000','http://13.49.44.199','http://alinfresh.online',]
@@ -146,13 +146,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-
-STATIC_URL = '/static/'
-
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-   os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = '/static/'
+
 
 
 
@@ -183,17 +182,3 @@ SECRET="Mx5xU3NZDb23UaHmM6MZyqBd"
 
 
 
-# server {
-#     listen 80;
-#     server_name alinfresh.online 13.51.166.186;
-
-#     location = /favicon.ico { access_log off; log_not_found off; }
-#     location /static/ {
-#         root /home/ubuntu/alinfresh;
-#     }
-
-#     location / {
-#         include proxy_params;
-#         proxy_pass http://unix:/run/gunicorn.sock;
-#     }
-# }
